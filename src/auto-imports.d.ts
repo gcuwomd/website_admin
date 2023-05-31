@@ -5,7 +5,6 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
-  const ResHelper: typeof import('./api/ResHelper')['default']
   const addMember: typeof import('./api/user/index')['addMember']
   const baseAxios: typeof import('./api/base_axios')['default']
   const computed: typeof import('vue')['computed']
@@ -47,6 +46,7 @@ declare global {
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
+  const resHelper: typeof import('./api/ResHelper')['default']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const setInterceptors: typeof import('./api/interceptors')['setInterceptors']
   const shallowReactive: typeof import('vue')['shallowReactive']
@@ -55,7 +55,6 @@ declare global {
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
-  const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const updataTask: typeof import('./api/user/index')['updataTask']

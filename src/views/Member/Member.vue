@@ -1,6 +1,6 @@
 <script lang="tsx" setup>
 import { updataTask } from "../../api/user";
-
+import {getAllMember} from "../../api/user"
 const showModal = ref(false);
 const message = useMessage();
 const columns = [
@@ -51,9 +51,13 @@ const data = ref([
     role_name: "无",
   },
 ]);
+
 function refreshData() {
   getAllMember().then((res) => {
     data.value = res.data;
+    console.log(res.dashed);
+    
+    
   });
 }
 refreshData();
@@ -107,7 +111,7 @@ const updataAllocation = ()=>{
           </template>
         </n-button>
       </n-space>
-      <n-data-table :columns="columns" :data="data" :max-height="550" />
+      <n-data-table :columns="columns" :data="data"  :remote="true" :max-height="550" />
       <!-- <n-spac justify="end">
         <n-button type="primary">更新网站</n-button>
       </n-spac> -->

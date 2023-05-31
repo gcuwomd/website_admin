@@ -23,6 +23,9 @@ function onSubmit(e: MouseEvent) {
                     router.push({ name: "Index" });
                     message.success("登陆成功");
                 }
+            }).catch(err=>{
+                message.error(err)
+                
             });
         } else {
             message.error("请按要求填写");

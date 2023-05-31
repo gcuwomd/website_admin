@@ -60,8 +60,20 @@ const router = createRouter({
 });
 
 // 路由守卫
-// router.beforeEach((to, from) => {
+router.beforeEach((to, from,next) => {
+  const token=localStorage.getItem("token")
+  if (token) {
+      //判断是否有token
+      next();
+  } else {
+      //在没有token的前提下，to下面的path是否为/login，如果不是则页面跳转到登录页面
+      if (to.path === "/login") {
+      next();
+      } else {
+        next({ path: "/login" }); //跳转页面到login页
+      }
+  }
 
-// });
+});
 
 export { router };

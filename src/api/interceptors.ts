@@ -11,25 +11,27 @@ import { useLocalStorage } from "@vueuse/core";
 import { useRouter } from "vue-router";
 import { c } from "naive-ui";
 const router = useRouter();
-const token = useLocalStorage("token", "");
 export function setInterceptors(axios: AxiosInstance) {
     // 添加请求拦截器
     axios.interceptors.request.use(
         function (config) {
             // 在发送请求之前做些什么
-                
             if (!NOT_TOKEN_URL.includes(config.url!)) {
+                const token = localStorage.getItem("token")
                 // 需要加 Token 的 API
-                if (token.value === "") {
+                if (token==="") {
+                    
                     return Promise.reject("你登录信息失效");
                 }
-                config.headers![TOKEN_NAME] = TOKEN_PREFIX + token.value;
+                config.headers![TOKEN_NAME] = TOKEN_PREFIX + token;
             }
-
+            
             return config;
         },
+
         function (error) {
             // 对请求错误做些什么
+            console.log(error);
             
             return Promise.reject(error);
         }
@@ -51,9 +53,10 @@ export function setInterceptors(axios: AxiosInstance) {
             // 超出 2xx 范围的状态码都会触发该函数。
             // 对响应错误做点什么
             // const status = error.response.status;
+            console.log(error);
             
             // if (status == 500) {
-                return Promise.reject(new Error("请求错误"));
+                return Promise.reject(new Error("响应错误"));
             // }
         }
     );

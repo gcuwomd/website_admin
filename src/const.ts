@@ -25,6 +25,6 @@ switch (import.meta.env.MODE) {
 // 重定向定时 (单位:秒)
 export const NOT_FOUND_COUNT_DOWN_TIME: number = 3;
 
-export const NOT_TOKEN_URL = ["/user/login"];
+export const NOT_TOKEN_URL = ["/user/loginAdmin"];
 export const TOKEN_NAME = "Authorization";
 export const TOKEN_PREFIX = "Bearer ";
